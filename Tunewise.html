@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tunewise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05060f; --bg2:#0b0e24; --ink:#e8f1ff; --muted:#8a96b8;
+  --cyan:#2de2ff; --violet:#8b5cff; --pink:#ff4fd8; --line:rgba(120,160,255,.18);
+  --display:'Michroma','Arial Black',sans-serif;
+  --body:'Space Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;
+  background:radial-gradient(1px 1px at 15% 20%,rgba(255,255,255,.35) 1px,transparent 0) 0 0/220px 220px,
+    radial-gradient(1px 1px at 70% 65%,rgba(45,226,255,.32) 1px,transparent 0) 0 0/260px 260px,
+    var(--bg);
+  color:var(--ink);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+
+/* background */
+#wave{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.glow{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(60rem 40rem at 15% 10%,rgba(139,92,255,.22),transparent 60%),
+             radial-gradient(50rem 35rem at 90% 80%,rgba(45,226,255,.16),transparent 60%)}
+main{position:relative;z-index:1}
+section{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+.hero>*{position:relative}
+.orb{position:absolute;top:50%;right:-1rem;transform:translateY(-50%);width:min(44vw,19rem);height:auto;
+  filter:drop-shadow(0 0 36px rgba(45,226,255,.3));opacity:.85;pointer-events:none}
+.wordmark{font-family:var(--display);font-weight:400;margin:0;line-height:1;letter-spacing:.02em;
+  font-size:clamp(2.2rem,10.6vw,8.6rem);
+  background:linear-gradient(100deg,#fff 10%,var(--cyan) 45%,var(--violet) 80%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 28px rgba(45,226,255,.35));
+  animation:boot 1.4s ease-out both}
+.tag{align-self:flex-end;margin:1.2rem 0 0;font-size:clamp(1.3rem,4vw,2.6rem);font-weight:500;letter-spacing:.04em;
+  background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{align-self:flex-end;margin:1rem 0 0;max-width:30ch;text-align:right;color:var(--muted);font-size:clamp(1rem,2.4vw,1.2rem)}
+.cta{align-self:flex-end;display:inline-block;margin-top:1.5rem;padding:.7rem 1.4rem;border-radius:999px;text-decoration:none;
+  font-weight:600;border:1px solid var(--cyan);color:var(--cyan);transition:background .25s,color .25s}
+.cta:hover{background:var(--cyan);color:#05060f}
+@media (max-width:680px){.orb{opacity:.35;width:58vw;right:-2.5rem}}
+@keyframes boot{from{opacity:0;filter:blur(14px) drop-shadow(0 0 0 transparent);letter-spacing:.3em}to{opacity:1}}
+
+/* headings */
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.2rem,3vw,1.8rem);margin:0 0 2rem;letter-spacing:.03em}
+.block{padding:5rem 1.5rem}
+
+/* tool */
+.tool{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;text-decoration:none;
+  padding:1.8rem;border:1px solid var(--line);border-radius:1.25rem;
+  background:linear-gradient(135deg,rgba(45,226,255,.07),rgba(139,92,255,.09));
+  backdrop-filter:blur(8px);transition:border-color .25s,box-shadow .25s,transform .25s}
+.tool:hover{border-color:var(--cyan);box-shadow:0 0 40px rgba(45,226,255,.25);transform:translateY(-3px)}
+.tool .ico{width:4rem;height:4rem;border-radius:1rem;display:grid;place-items:center;
+  background:rgba(45,226,255,.12);border:1px solid var(--line);color:var(--cyan)}
+.tool h3{font-family:var(--display);font-weight:400;font-size:1.3rem;margin:0 0 .25rem}
+.tool p{margin:0;color:var(--muted)}
+.go{font-weight:600;color:var(--cyan);white-space:nowrap}
+
+/* founder */
+.founder{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap;padding:2rem;
+  border:1px solid var(--line);border-radius:1.25rem;background:rgba(11,14,36,.6)}
+.avatar{width:5.2rem;height:5.2rem;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:1.3rem;
+  background:conic-gradient(from 200deg,var(--cyan),var(--violet),var(--pink),var(--cyan));color:#05060f}
+.founder h3{margin:0;font-size:1.5rem;font-weight:600}
+.founder p{margin:.2rem 0 .9rem;color:var(--muted)}
+.yt{display:inline-block;text-decoration:none;font-weight:600;padding:.65rem 1.3rem;border-radius:999px;
+  background:linear-gradient(90deg,var(--cyan),var(--violet));color:#05060f;transition:box-shadow .25s}
+.yt:hover{box-shadow:0 0 28px rgba(139,92,255,.6)}
+
+footer{position:relative;z-index:1;text-align:center;color:var(--muted);padding:3rem 1.5rem 2.5rem;font-size:.95rem}
+
+@media (max-width:600px){
+  .tool{grid-template-columns:auto 1fr}
+  .go{grid-column:1 / -1}
+}
+@media (prefers-reduced-motion:reduce){
+  .wordmark{animation:none}.tool,.yt,.cta{transition:none}
+}
+</style>
+</head>
+<body>
+<canvas id="wave" aria-hidden="true"></canvas>
+<div class="glow" aria-hidden="true"></div>
+
+<main>
+  <section class="hero">
+    <svg class="orb" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="orbCore" cx="50%" cy="45%" r="60%">
+          <stop offset="0%" stop-color="#eafcff"/>
+          <stop offset="40%" stop-color="#2de2ff"/>
+          <stop offset="100%" stop-color="#8b5cff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="80" cy="80" r="74" fill="none" stroke="rgba(120,160,255,.35)"/>
+      <circle cx="80" cy="80" r="56" fill="none" stroke="#2de2ff" opacity=".35"/>
+      <circle cx="80" cy="80" r="30" fill="url(#orbCore)"/>
+      <circle cx="80" cy="80" r="74" fill="none" stroke="#ff4fd8" stroke-width="1.4" stroke-dasharray="2 10" opacity=".8"/>
+      <circle cx="154" cy="80" r="3.2" fill="#2de2ff"/>
+      <circle cx="6" cy="80" r="2.4" fill="#ff4fd8"/>
+    </svg>
+    <h1 class="wordmark">TUNEWISE</h1>
+    <p class="tag">Your AI companion</p>
+    <p class="lede">Where you meet futuristic tools. Want to build one?</p>
+    <a class="cta" href="#tools">See our tools</a>
+  </section>
+
+  <section class="block" id="tools">
+    <h2>Our tools</h2>
+    <a class="tool" href="https://mtc2026.github.io/electroq" target="_blank" rel="noopener">
+      <span class="ico" aria-hidden="true">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+      </span>
+      <span>
+        <h3>ElectroQ</h3>
+        <p>Plumbing and electric helper</p>
+      </span>
+      <span class="go">Open tool &rarr;</span>
+    </a>
+  </section>
+
+  <section class="block" id="founder">
+    <h2>Founder</h2>
+    <div class="founder">
+      <div class="avatar" aria-hidden="true">DL</div>
+      <div>
+        <h3>Darshan N Lal</h3>
+        <p>13-year-old entrepreneur and AI engineer</p>
+        <a class="yt" href="https://www.youtube.com/@DARSHANNLALofficial" target="_blank" rel="noopener">Watch on YouTube</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>&copy; Tunewise 2026</footer>
+
+<script>
+(function(){
+  var c=document.getElementById('wave'),x=c.getContext('2d'),w,h,t=0;
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){var d=window.devicePixelRatio||1;w=c.width=innerWidth*d;h=c.height=innerHeight*d;}
+  addEventListener('resize',size);size();
+  var cols=['45,226,255','139,92,255','255,79,216'];
+  function draw(){
+    x.clearRect(0,0,w,h);
+    for(var i=0;i<3;i++){
+      x.beginPath();
+      for(var px=0;px<=w;px+=8){
+        var n=px/w;
+        // wave starts noisy and settles into a clean tuned sine toward the right
+        var noise=(1-n)*Math.sin(px*.05+t*2+i)*.35;
+        var y=h*.72+Math.sin(px*.006+t+i*1.1)*h*.05*(0.6+i*.25)+noise*h*.04;
+        px?x.lineTo(px,y):x.moveTo(px,y);
+      }
+      x.strokeStyle='rgba('+cols[i]+','+(.5-i*.12)+')';
+      x.lineWidth=(2.2-i*.5)*(window.devicePixelRatio||1);
+      x.stroke();
+    }
+    t+=.012;
+    if(!still)requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
